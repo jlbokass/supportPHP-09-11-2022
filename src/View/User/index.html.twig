@@ -1,0 +1,46 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+    <h1>Users</h1>
+    {# Je voudrai ici un tablea d'utilisateur #}
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Birthday</th>
+        </tr>
+        {% if users %}
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.birthday }}</td>
+                </tr>
+            {% endfor %}
+            {% else %}
+                <tr>
+                    <td colspan="4" style="text-align: center"><strong>NO user in database</strong></td>
+                </tr>
+        {% endif %}
+    </table>
+    <a href="/user/add">Add a user</a>
+{% endblock %}
